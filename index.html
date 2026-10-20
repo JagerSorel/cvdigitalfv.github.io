@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum Vitae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Paleta marrón pastel sutil */
+      --brown-50:  #faf6f1;
+      --brown-100: #f3ece3;
+      --brown-200: #e8ddd0;
+      --brown-300: #d4c4ad;
+      --brown-400: #bfa98a;
+      --brown-500: #a68e6e;
+      --brown-600: #8d7558;
+      --brown-700: #6e5b44;
+      --brown-800: #564834;
+      --brown-900: #3e3426;
+
+      --text-dark:    #3e3426;
+      --text-medium:  #6e5b44;
+      --text-light:   #8d7558;
+      --accent:       #a68e6e;
+      --bg-page:      #fdfbf8;
+      --bg-card:      #ffffff;
+      --border-color: #e8ddd0;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Page Container ───────────────────────────────────── */
+    .cv-page {
+      max-width: 900px;
+      margin: 40px auto;
+      background: var(--bg-card);
+      border-radius: 6px;
+      box-shadow: 0 2px 24px rgba(62, 52, 38, .08);
+      overflow: hidden;
+    }
+
+    /* ── Header ───────────────────────────────────────────── */
+    .cv-header {
+      display: flex;
+      align-items: stretch;
+      background: linear-gradient(135deg, var(--brown-300), var(--brown-400));
+      position: relative;
+    }
+
+    .cv-header__title-area {
+      flex: 1;
+      padding: 40px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cv-header__label {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .5px;
+      text-shadow: 0 1px 4px rgba(62,52,38,.15);
+    }
+
+    .cv-header__subtitle {
+      margin-top: 6px;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .3px;
+    }
+
+    .cv-header__photo-wrapper {
+      width: 170px;
+      min-height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 28px 20px 0;
+    }
+
+    .cv-header__photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,.7);
+      object-fit: cover;
+      background: var(--brown-200);
+      box-shadow: 0 4px 14px rgba(62,52,38,.18);
+    }
+
+    /* Placeholder avatar SVG when no photo is available */
+    .cv-header__photo--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,.7);
+      background: var(--brown-200);
+      box-shadow: 0 4px 14px rgba(62,52,38,.18);
+      color: var(--brown-600);
+    }
+
+    .cv-header__photo--placeholder svg {
+      width: 64px;
+      height: 64px;
+      opacity: .55;
+    }
+
+    /* ── Info Personal ─────────────────────────────────────── */
+    .info-personal {
+      display: flex;
+      gap: 36px;
+      padding: 36px 44px;
+      border-bottom: 2px solid var(--border-color);
+      background: var(--brown-50);
+    }
+
+    .info-personal__details {
+      flex: 1;
+    }
+
+    .info-personal__name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--brown-800);
+      margin-bottom: 4px;
+    }
+
+    .info-personal__role {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 18px;
+    }
+
+    .info-personal__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 32px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .92rem;
+      color: var(--text-medium);
+    }
+
+    .info-item__icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--brown-400);
+    }
+
+    .info-item strong {
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-right: 2px;
+    }
+
+    .info-personal__profile {
+      margin-top: 20px;
+      font-size: .93rem;
+      color: var(--text-medium);
+      border-left: 3px solid var(--brown-300);
+      padding-left: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Section generic ──────────────────────────────────── */
+    .section {
+      padding: 32px 44px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section__title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--brown-700);
+      margin-bottom: 22px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--brown-300);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section__title svg {
+      width: 20px;
+      height: 20px;
+      color: var(--brown-400);
+      flex-shrink: 0;
+    }
+
+    /* ── Experience ────────────────────────────────────────── */
+    .experience-list {
+      list-style: none;
+    }
+
+    .experience-item {
+      position: relative;
+      padding-left: 28px;
+      padding-bottom: 28px;
+    }
+
+    .experience-item:last-child { padding-bottom: 0; }
+
+    /* timeline dot & line */
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--brown-400);
+      border: 3px solid var(--brown-200);
+    }
+
+    .experience-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 22px;
+      width: 2px;
+      bottom: 0;
+      background: var(--brown-200);
+    }
+
+    .experience-item:last-child::after { display: none; }
+
+    .experience-item__period {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 2px;
+    }
+
+    .experience-item__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .experience-item__company {
+      font-size: .9rem;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .experience-item__desc {
+      font-size: .9rem;
+      color: var(--text-medium);
+      line-height: 1.65;
+    }
+
+    .experience-item__desc ul {
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+
+    .experience-item__desc li {
+      margin-bottom: 3px;
+    }
+
+    /* ── Two-column bottom ────────────────────────────────── */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .two-columns > .section:first-child {
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* ── Education ─────────────────────────────────────────── */
+    .education-list {
+      list-style: none;
+    }
+
+    .education-item {
+      margin-bottom: 20px;
+    }
+
+    .education-item:last-child { margin-bottom: 0; }
+
+    .education-item__period {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .7px;
+    }
+
+    .education-item__degree {
+      font-size: .98rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 2px;
+    }
+
+    .education-item__school {
+      font-size: .88rem;
+      color: var(--text-light);
+    }
+
+    /* ── Skills ────────────────────────────────────────────── */
+    .skills-group {
+      margin-bottom: 20px;
+    }
+
+    .skills-group:last-child { margin-bottom: 0; }
+
+    .skills-group__label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .skill-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .skill-bar__name {
+      min-width: 110px;
+      font-size: .88rem;
+      color: var(--text-medium);
+    }
+
+    .skill-bar__track {
+      flex: 1;
+      height: 7px;
+      background: var(--brown-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-bar__fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--brown-400), var(--brown-500));
+      transition: width .6s ease;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 14px;
+      font-size: .82rem;
+      color: var(--brown-700);
+      background: var(--brown-100);
+      border: 1px solid var(--brown-200);
+      border-radius: 20px;
+      letter-spacing: .3px;
+    }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    .cv-footer {
+      text-align: center;
+      padding: 18px 44px;
+      font-size: .78rem;
+      color: var(--text-light);
+      background: var(--brown-50);
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* ── Print styles ─────────────────────────────────────── */
+    @media print {
+      body { background: #fff; }
+      .cv-page {
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .cv-page { margin: 0; border-radius: 0; }
+      .cv-header { flex-direction: column; text-align: center; }
+      .cv-header__title-area { padding: 28px 24px 16px; }
+      .cv-header__photo-wrapper { width: 100%; padding: 0 0 24px; }
+      .info-personal { flex-direction: column; padding: 24px; }
+      .info-personal__grid { grid-template-columns: 1fr; }
+      .section { padding: 24px; }
+      .two-columns { grid-template-columns: 1fr; }
+      .two-columns > .section:first-child { border-right: none; border-bottom: 1px solid var(--border-color); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-page">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="cv-header">
+    <div class="cv-header__title-area">
+      <h1 class="cv-header__label">Curriculum Vitae</h1>
+      <p class="cv-header__subtitle">Documento profesional actualizado — Octubre 2026</p>
+    </div>
+    <div class="cv-header__photo-wrapper">
+      <!-- Reemplazar con <img class="cv-header__photo" src="foto.jpg" alt="Foto" /> -->
+      <div class="cv-header__photo--placeholder" aria-label="Foto de perfil">
+        <img class="cv-header__photo--placeholder" src="cvf.jpg" alt="Foto">
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ INFORMACIÓN PERSONAL ═══ -->
+  <section class="info-personal">
+    <div class="info-personal__details">
+      <h2 class="info-personal__name">Fabricio Adalberto Vargas Valle</h2>
+      <p class="info-personal__role">Licenciado en Informática</p>
+
+      <div class="info-personal__grid">
+        <div class="info-item">
+          <svg class="info-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Dirección:</strong> Calle Roble, Casa 46, San Salvador</span>
+        </div>
+        <div class="info-item">
+          <svg class="info-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.24a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.9z"/></svg>
+          <span><strong>Teléfono:</strong> +503 2257 7777</span>
+        </div>
+        <div class="info-item">
+          <svg class="info-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><strong>Email:</strong> vargasfabricio1989@gmail.com</span>
+        </div>
+        <div class="info-item">
+          <svg class="info-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+          <span><strong>GitHub:</strong> github.com/JagerSorel</span>
+        </div>
+        <div class="info-item">
+          <svg class="info-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span><strong>Nacimiento:</strong> 19 de agosto de 2005</span>
+        </div>
+        <div class="info-item">
+          <svg class="info-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span><strong>País:</strong> El Salvador</span>
+        </div>
+      </div>
+
+      <p class="info-personal__profile">
+        Estudiante principiante aspirante a profesional con 2 años de aprendizaje en desarrollo de software, especializado en soluciones fiables para equipos de legado. Apasionado por el software libre y entusiasta de la autonomía, sostenibilidad y soberanía tecnológica. Priorizo la optimización, el rendimiento y la consolidación en el desarrollo de tecnologías de software.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCIA LABORAL ═══ -->
+  <section class="section">
+    <h2 class="section__title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      Experiencia Laboral
+    </h2>
+
+    <ul class="experience-list">
+      <li class="experience-item">
+        <p class="experience-item__period">Enero 2026 — Mayo 2026</p>
+        <p class="experience-item__title">Proyecto SafeWealth Finance</p>
+        <p class="experience-item__company">Programación I</p>
+        <div class="experience-item__desc">
+          <ul>
+            <li>Co-líder y Vicerepresentante del equipo de desarrollo.</li>
+            <li>Implementación e integración de bases de datos SQL en programas de C# Forms.</li>
+            <li>Manejo de finanzas, registros de pago y asesoría financiera.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="experience-item">
+        <p class="experience-item__period">Enero 2026 — Junio 2026</p>
+        <p class="experience-item__title">Proyecto ViaNova</p>
+        <p class="experience-item__company">Lenguaje de Modelado Unificado</p>
+        <div class="experience-item__desc">
+          <ul>
+            <li>Líder y diseñador en jefe del equipo de desarrollo.</li>
+            <li>Gestión inteligente de medios de transporte público empleando los principios de la POO y los ODS.</li>
+            <li>Diseño y planificación en la migración de sistemas legacy a arquitecturas modernas.</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══ DOS COLUMNAS: Formación + Habilidades ═══ -->
+  <div class="two-columns">
+
+    <!-- Formación Académica -->
+    <section class="section">
+      <h2 class="section__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+        Formación Académica
+      </h2>
+
+      <ul class="education-list">
+        <li class="education-item">
+          <p class="education-item__period">2022 — 2024</p>
+          <p class="education-item__degree">Bachillerato General en Gerencia Empresarial</p>
+          <p class="education-item__school">Liceo Cristiano Reverendo Juan Bueno</p>
+        </li>
+        <li class="education-item">
+          <p class="education-item__period">2024</p>
+          <p class="education-item__degree">Técnico Contador</p>
+          <p class="education-item__school">Liceo Cristiano Reverendo Juan Bueno</p>
+        </li>
+        <li class="education-item">
+          <p class="education-item__period">2025 - En proceso</p>
+          <p class="education-item__degree">Licenciatura en Informática</p>
+          <p class="education-item__school">Universidad Tecnológica de El Salvador</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Habilidades y Destrezas -->
+    <section class="section">
+      <h2 class="section__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Habilidades y Destrezas
+      </h2>
+
+      <div class="skills-group">
+        <p class="skills-group__label">Técnicas</p>
+        <div class="skill-bar">
+          <span class="skill-bar__name">Java</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:62%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <span class="skill-bar__name">C#</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:55%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <span class="skill-bar__name">JavaScript</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:51%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <span class="skill-bar__name">GitHub / Cloud</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:37%"></div></div>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group__label">Idiomas</p>
+        <div class="skill-bar">
+          <span class="skill-bar__name">Español</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:100%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <span class="skill-bar__name">Inglés (B1)</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <span class="skill-bar__name">Serbocroata</span>
+          <div class="skill-bar__track"><div class="skill-bar__fill" style="width:21%"></div></div>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group__label">Competencias</p>
+        <div class="tags">
+          <span class="tag">Orden</span>
+          <span class="tag">Liderazgo</span>
+          <span class="tag">Comunicación</span>
+          <span class="tag">Resolución de imprevistos</span>
+          <span class="tag">Gestión ágil</span>
+          <span class="tag">Decoro</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="cv-footer">
+    NO AUTORIZO el tratamiento de mis datos personales con fines de mercadeo y/o datamining.
+  </footer>
+
+</div>
+
+</body>
+</html>
